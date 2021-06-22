@@ -1,2 +1,2 @@
-# simple-mvc-framework
-Simple mvc framework using PHP
+# PHP MCV
+Simple project MVC using PHP
