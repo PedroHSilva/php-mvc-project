@@ -1,0 +1,20 @@
+{
+    "name": "pedrohsilva/php-mvc-project",
+    "description": "Uma base simples para projetos pequenos MVC com php",
+    "authors": [
+        {
+            "name": "pedrohsilva",
+            "email": "pedro_silva@id.uff.br"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+          "Application\\": "Application/"
+        },
+        "files": [
+          "Application/boot/Config.php",
+          "Application/boot/Helpers.php"
+        ]
+      },
+    "require": {}
+}

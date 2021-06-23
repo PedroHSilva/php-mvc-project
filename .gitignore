@@ -1,0 +1,7 @@
+
+composer.phar
+/vendor/
+/Application/boot/Config.php
+.htaccess
+/Application/.htaccess
+/public/.htaccess
