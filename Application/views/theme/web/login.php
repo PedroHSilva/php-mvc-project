@@ -1,12 +1,19 @@
 <div class="container w3-blue-gray w3-display-container" style="height:100vh;">
     <div class="w3-display-middle">
+        <?=flash() ?? ''?>
         <div class="w3-center w3-padding w3-round w3-card-4 w3-text-dark-grey" style="min-width:320px; overflow:hiden; background:rgba(255,255,255, 0.7)">
-        
+            
             <h3><i class="fa fa-user-circle w3-jumbo w3-text-blue-gray" aria-hidden="true"></i></h3>
             
             <form action="<?=url('/auth/login')?>" method="post">
+                <?=csrf_input()?>
                 <div class="w3-section">
-                    <input class="w3-input w3-light-grey w3-center w3-round-large" type="email" name="email" id="email" placeholder="digite seu login">
+                    <input class="w3-input w3-light-grey w3-center w3-round-large" 
+                    type="email" 
+                    name="email" 
+                    id="email" 
+                    value="<?=$_GET['email'] ?? ''?>" 
+                    placeholder="digite seu login">
                 </div>
 
                 <div class="w3-section">

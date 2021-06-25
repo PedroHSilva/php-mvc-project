@@ -17,18 +17,33 @@ class Auth extends Controller
 
     public function login()
     {
-
-        $auth = new AuthUser();
+        $token = $_POST['csrf'];
         $email = $_POST['email'];
         $password = $_POST['password'];
+
+        if(!csrf_verify($token)) {
+            $msg = (new Message())->error("Error! Please use the form")->flash();
+            header("location: ".url('auth'));
+            return;
+        }
+
+        if(empty($email) || empty($password)) {
+            $msg = (new Message())->error("email and password is required!")->flash();
+            header("location: ".url('auth'));
+            return;
+        }
+
+        //LOGIN
+        $auth = new AuthUser();
         $login = $auth::login($email, $password);
 
         if ($login) {
-            $msg = (new Message())->success("logado com sucesso")->flash();
-            header("location: " . url("user"));
+            header("location: " . url("admin"));
+            return;
         } else {
-            $msg = (new Message())->error("Acesso não autorizado");
-            echo $msg;
+            $msg = (new Message())->error("Invalid email or password!")->flash();
+            header("location: " . url("auth/?email={$email}"));
+            return;
         }
     }
 
@@ -36,6 +51,8 @@ class Auth extends Controller
     {
         $auth = new AuthUser();
         $auth::logout();
+        $msg = (new Message())->success("logged out")->flash();
         header("location: " . url("auth"));
+        return;
     }
 }

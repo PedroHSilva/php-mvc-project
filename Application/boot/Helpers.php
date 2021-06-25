@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @param string $uri
  * @return string
@@ -63,4 +62,25 @@ function flash(): ?string
         echo $flash;
     }
     return null;
+}
+
+function csrf_input()
+{
+    $session = new \Application\core\Session();
+    $session->csrf();
+    return "<input type='hidden' name='csrf' value='" . ($session->get('csrf_token' ?? '')) . "'/>";
+}
+
+/**
+ * @param mixed $token
+ * 
+ * @return bool
+ */
+function csrf_verify($token): bool
+{
+    $session = new \Application\core\Session();
+    if(empty($session->get('csrf_token')) || empty($token) || $token != $session->get("csrf_token")) {
+        return false;
+    }
+    return true;
 }

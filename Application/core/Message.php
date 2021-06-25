@@ -79,7 +79,11 @@ class Message
      */
     public function render(): String
     {
-        return "<div class='>" . CONF_MESSAGE_CLASS . " {$this->getType()}'> {$this->getText()} </div>";
+        $close = "this.parentElement.style.display='none'";
+        return "<div class='" . CONF_MESSAGE_CLASS . " {$this->getType()}'>" .
+                    "<span onclick=$close class='w3-button w3-large w3-display-topright w3-text-red w3-xlarge w3-hover-pale-red'>&times;</span>
+                    <p>{$this->getText()}</p>
+                </div>";
     }
 
     /**
