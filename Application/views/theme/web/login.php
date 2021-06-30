@@ -13,11 +13,11 @@
                     name="email" 
                     id="email" 
                     value="<?=$_GET['email'] ?? ''?>" 
-                    placeholder="digite seu login">
+                    placeholder="digite seu login" required>
                 </div>
 
                 <div class="w3-section">
-                    <input class="w3-input w3-light-grey w3-center w3-round-large" type="password" name="password" id="password" placeholder="Digite sua senha">
+                    <input class="w3-input w3-light-grey w3-center w3-round-large" type="password" name="password" id="password" placeholder="Digite sua senha" required>
                 </div>
                 <div class="w3-section">
                     <button class="w3-button w3-block w3-blue-gray w3-hover-dark-grey w3-round-large" type="submit">Entrar</button>

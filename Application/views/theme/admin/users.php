@@ -11,10 +11,10 @@
     <div class="w3-responsive">
         <table class="w3-table-all w3-hoverable">
         <thead>
-            <tr class="w3-dark-grey">
+            <tr class="w3-teal">
             <th>Name</th>
             <th>Email</th>
-            <th class="w3-center">Actions</th>
+            <th class="w3-center w3-center">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -23,8 +23,8 @@
                     <td><?=$user->first_name . " " . $user->last_name?></td>
                     <td><?=$user->email?></td>
                     <td class="w3-center">
-                        <i class="fa fa-pencil w3-text-blue w3-large w3-margin-right" aria-hidden="true"></i>
-                        <i class="fa fa-trash w3-text-red w3-large" aria-hidden="true"></i>
+                        <a href="<?=url('admin/userUpdate/'.$user->id)?>" class="w3-text-blue w3-hover-blue w3-text-hover-white w3-padding"><i class="fa fa-pencil"></i></a>
+                        <a href="<?=url('admin/userDelete/'.$user->id)?>" class="w3-text-red w3-hover-red w3-text-hover-white w3-padding"><i class="fa fa-trash"></i></a>
                     </td>
                 </tr>
             <?php endforeach;?>

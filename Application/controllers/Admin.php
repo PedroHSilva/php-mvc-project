@@ -72,9 +72,26 @@ class Admin extends Controller
         $user->password = password($password);
 
         $user->save();
+        $msg = (new Message())->success("User: {$user->first_name} {$user->last_name}, registered successfully!")->flash();
         header("location: " . url('admin/users'));
         return;
 
+    }
+
+    public function userDelete($id = null)
+    {
+        if(is_numeric($id)) {
+            $user = (new User())->findById($id);
+            if($user) {
+                $msg = (new Message())->success("Usuário <b>$user->first_name $user->last_name</b> excluido com sucesso!")->flash();
+                $user->delete();
+                header("location: ".url("admin/users"));
+                return;
+            }
+            echo "Usuário não localizado";
+        } else {
+            echo "nada";
+        }
     }
 
 }
